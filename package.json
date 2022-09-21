@@ -1,0 +1,18 @@
+{
+  "name": "lambda-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "~5.3.1",
+    "esbuild": "~0.15.8",
+    "find": "~0.3.0",
+    "yaml": "~2.1.1"
+  }
+}
