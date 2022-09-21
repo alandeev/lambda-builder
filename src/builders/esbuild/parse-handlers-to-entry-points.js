@@ -2,7 +2,7 @@ const parseHandlersToEntrypoints = (handlers, build) => handlers.reduce(
   (previous, handler) => {
     let outputKey = build.individually ? 
       `${handler.lambda_name}/${handler.output}` :
-      `serverless/${handler.output}`
+      handler.output
 
     outputKey = outputKey.replace('.js', '')
 
