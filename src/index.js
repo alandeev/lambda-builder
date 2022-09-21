@@ -60,11 +60,11 @@ const buildRun = async (options = {}) => {
 
     for(let handler of handlers) {
       const inputFolder = `${process.cwd()}/${buildOptions.outdir}/${handler}`
-      const zipOut = `${inputFolder}.zip`
-
-      console.time(`Compress lambda - ${zipOut}`)
-      await zipDirectory(inputFolder, zipOut)
-      console.timeEnd(`Compress lambda - ${zipOut}`)
+      const outZip = `${buildOptions.outdir}/${handler}.zip`
+      
+      console.time(`Compress lambda - ${outZip}`)
+      await zipDirectory(inputFolder, outZip)
+      console.timeEnd(`Compress lambda - ${outZip}`)
     }
   }
 
