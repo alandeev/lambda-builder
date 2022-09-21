@@ -1,4 +1,5 @@
 const esbuild = require('esbuild')
+
 const parseHandlersToEntrypoints = require('./parse-handlers-to-entry-points')
 
 const defaultSettings = {
@@ -6,26 +7,25 @@ const defaultSettings = {
   outdir: 'build',
   sourcemap: true,
   bundle: false,
-  logLevel: 'debug'
+  logLevel: 'debug',
+  treeShaking: false,
+  minify: false,
 }
 
 const buildESBuildLambda = async ({ handlers, build }) => {
   const entryPoints = parseHandlersToEntrypoints(handlers, build)
 
   const buildOptions = {
-    entryPoints: entryPoints,
+    entryPoints,
     outdir: build.outdir ?? defaultSettings.outdir,
     platform: build.platform ?? defaultSettings.platform,
     sourcemap: build.sourcemap ?? defaultSettings.sourcemap,
     bundle: build.bundle ?? defaultSettings.bundle,
-    logLevel: defaultSettings.logLevel
+    treeShaking: build.three_shaking ?? defaultSettings.treeShaking,
+    minify: build.minify ?? defaultSettings.minify,
   }
 
-  const resultBuild = await esbuild.build(buildOptions)
-
-  console.log(resultBuild)
-
-  return resultBuild
+  return esbuild.build(buildOptions)
 }
 
 module.exports = buildESBuildLambda
